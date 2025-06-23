@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sanskar Singh - Portfolio</title>
+
+  <!-- Google Fonts - Professional fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    :root {
+      /* Dark mode colors */
+      --bg-primary: #0f0f23;
+      --bg-secondary: #1a1a2e;
+      --bg-tertiary: #16213e;
+      --text-primary: #ffffff;
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+      --accent-primary: #4f46e5;
+      --accent-secondary: #7c3aed;
+      --border-color: rgba(255, 255, 255, 0.1);
+      --nav-bg: rgba(15, 15, 35, 0.95);
+      --card-bg: rgba(255, 255, 255, 0.05);
+    }
+
+    [data-theme="light"] {
+      /* Light mode colors */
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8fafc;
+      --bg-tertiary: #f1f5f9;
+      --text-primary: #1e293b;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --accent-primary: #4f46e5;
+      --accent-secondary: #7c3aed;
+      --border-color: rgba(0, 0, 0, 0.1);
+      --nav-bg: rgba(255, 255, 255, 0.95);
+      --card-bg: rgba(0, 0, 0, 0.05);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
+      color: var(--text-primary);
+      scroll-behavior: smooth;
+      line-height: 1.6;
+      transition: all 0.3s ease;
+    }
+
+    .topnav {
+      background: var(--nav-bg);
+      backdrop-filter: blur(10px);
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      justify-content: space-between;
+      padding: 1.5rem 3rem;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      animation: slideInDown 0.8s ease;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .topnav .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      letter-spacing: -0.5px;
+    }
+
+    .topnav nav {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .topnav nav a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      position: relative;
+      transition: all 0.3s ease;
+      padding: 0.5rem 0;
+    }
+
+    .topnav nav a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+      left: 0;
+      bottom: 0;
+      transition: width 0.3s ease;
+    }
+
+    .topnav nav a:hover {
+      color: var(--text-primary);
+    }
+
+    .topnav nav a:hover::after {
+      width: 100%;
+    }
+
+    .theme-toggle {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 50px;
+      padding: 0.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      color: var(--text-primary);
+      font-size: 1.1rem;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .theme-toggle:hover {
+      background: var(--accent-primary);
+      color: white;
+      transform: scale(1.05);
+    }
+
+    .hero-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 3rem 2rem;
+      gap: 4rem;
+      flex-wrap: wrap;
+      min-height: 80vh;
+    }
+
+    .hero-text {
+      flex: 1;
+      color: var(--text-primary);
+    }
+
+    .hero-text h1 {
+      font-size: 3.5rem;
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: -1px;
+      line-height: 1.1;
+    }
+
+    .hero-text h2 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: var(--accent-primary);
+      margin-bottom: 1.5rem;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: -0.5px;
+    }
+
+    .hero-text h2 span {
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-text p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      margin-bottom: 2.5rem;
+      font-weight: 400;
+      max-width: 600px;
+    }
+
+    .hero-text .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+    }
+
+    .hero-text .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
+    }
+
+    .hero-image {
+      flex: 1;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-image::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 320px;
+      height: 320px;
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      border-radius: 50%;
+      opacity: 0.1;
+      z-index: -1;
+    }
+
+    .hero-image img {
+      width: 280px;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      border: 3px solid rgba(79, 70, 229, 0.2);
+    }
+
+    .hero-image img:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+    }
+
+    footer {
+      background: var(--nav-bg);
+      backdrop-filter: blur(10px);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      font-family: 'Inter', sans-serif;
+      border-top: 1px solid var(--border-color);
+      margin-top: 4rem;
+    }
+
+    @keyframes slideInDown {
+      from { 
+        transform: translateY(-100%); 
+        opacity: 0; 
+      }
+      to { 
+        transform: translateY(0); 
+        opacity: 1; 
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-text {
+      animation: fadeInUp 1s ease 0.3s both;
+    }
+
+    .hero-image {
+      animation: fadeInUp 1s ease 0.6s both;
+    }
+
+    @media (max-width: 768px) {
+      .topnav {
+        padding: 1rem 1.5rem;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .topnav nav {
+        gap: 1rem;
+      }
+
+      .hero-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 1rem;
+        gap: 2rem;
+      }
+
+      .hero-text h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero-text h2 {
+        font-size: 2rem;
+      }
+
+      .hero-text p {
+        font-size: 1rem;
+      }
+
+      .hero-image img {
+        width: 240px;
+        height: 240px;
+      }
+
+      .hero-image::before {
+        width: 280px;
+        height: 280px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .topnav .logo {
+        font-size: 1.5rem;
+      }
+
+      .hero-text h1 {
+        font-size: 2rem;
+      }
+
+      .hero-text h2 {
+        font-size: 1.5rem;
+      }
+
+      .hero-image img {
+        width: 200px;
+        height: 200px;
+      }
+
+      .hero-image::before {
+        width: 240px;
+        height: 240px;
+      }
+
+      .social-links {
+        justify-content: center;
+        margin-top: 1.5rem;
+      }
+
+      .social-links a {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+      }
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      color: var(--text-primary);
+      font-size: 1.2rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .social-links a:hover {
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      border-color: transparent;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(79, 70, 229, 0.3);
+    }
+
+    .social-links a.linkedin:hover {
+      background: linear-gradient(135deg, #0077b5, #00a0dc);
+      box-shadow: 0 8px 20px rgba(0, 119, 181, 0.3);
+    }
+
+    .social-links a.github:hover {
+      background: linear-gradient(135deg, #333333, #666666);
+      box-shadow: 0 8px 20px rgba(51, 51, 51, 0.3);
+    }
+
+    /* Skills Section */
+    .skills-section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 3rem;
+      letter-spacing: -0.5px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .skill-category {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 2rem;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .skill-category:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .skill-category h3 {
+      color: var(--text-primary);
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .skill-item {
+      margin-bottom: 1.5rem;
+    }
+
+    .skill-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .skill-name {
+      color: var(--text-secondary);
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .skill-percentage {
+      color: var(--accent-primary);
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .skill-bar {
+      width: 100%;
+      height: 8px;
+      background: var(--border-color);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .skill-progress {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+      border-radius: 4px;
+      width: 0%;
+      transition: width 2s ease;
+      position: relative;
+    }
+
+    .skill-progress::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      animation: shimmer 2s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topnav">
+    <div class="logo">Portfolio</div>
+    <nav>
+      <a href="portfolio.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <button class="theme-toggle" id="themeToggle">
+      <i class="fas fa-moon"></i>
+    </button>
+  </div>
+
+  <section class="hero-section">
+    <div class="hero-text">
+      <h1>Hello, I'm</h1>
+      <h2><span>Sanskar Singh</span></h2>
+      <p>
+        Dynamic Computer Science enthusiast with extensive hands-on experience in AI/ML and cloud technologies, poised
+        to make a significant impact in the tech industry. Proficient in Python and AWS, showcasing a strong foundation in
+        frontend development and deployment. Developed a cloud-based facial recognition attendance system, highlighting
+        problem-solving skills and a commitment to innovation. Passionate about creating user-friendly, scalable solutions
+        within collaborative team environments, eager to contribute to forward-thinking projects.
+      </p>
+      <a href="Sanskar Singh Resume[3].pdf" class="btn">Download Resume</a>
+      
+      <div class="social-links">
+        <a href="https://linkedin.com/in/sanskar9929" target="_blank" class="linkedin" title="Connect on LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://github.com/ishanuchaudhary" target="_blank" class="github" title="View GitHub Profile">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <img src="sanskar.jpg" alt="Sanskar Singh">
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="skills-section">
+    <h2 class="section-title">Skills & Technologies</h2>
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h3><i class="fas fa-code"></i> Programming Languages</h3>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Python</span>
+            <span class="skill-percentage">90%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="90"></div>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">JavaScript</span>
+            <span class="skill-percentage">85%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="85"></div>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">HTML/CSS</span>
+            <span class="skill-percentage">80%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="80"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <h3><i class="fas fa-cloud"></i> Cloud & DevOps</h3>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">AWS</span>
+            <span class="skill-percentage">85%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="85"></div>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Docker</span>
+            <span class="skill-percentage">75%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="75"></div>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Git</span>
+            <span class="skill-percentage">90%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="90"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <h3><i class="fas fa-brain"></i> AI/ML & Tools</h3>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Machine Learning</span>
+            <span class="skill-percentage">80%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="80"></div>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">TensorFlow</span>
+            <span class="skill-percentage">75%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="75"></div>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">OpenCV</span>
+            <span class="skill-percentage">85%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="85"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Sanskar Singh. All rights reserved.
+  </footer>
+
+  <script>
+    // Theme Toggle Functionality
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
+    const icon = themeToggle.querySelector('i');
+
+    // Check for saved theme preference or default to dark
+    const currentTheme = localStorage.getItem('theme') || 'dark';
+    body.setAttribute('data-theme', currentTheme);
+    updateThemeIcon(currentTheme);
+
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = body.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      body.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateThemeIcon(newTheme);
+    });
+
+    function updateThemeIcon(theme) {
+      if (theme === 'light') {
+        icon.className = 'fas fa-sun';
+      } else {
+        icon.className = 'fas fa-moon';
+      }
+    }
+
+    // Animated Skill Bars
+    function animateSkillBars() {
+      const skillBars = document.querySelectorAll('.skill-progress');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const progressBar = entry.target;
+            const width = progressBar.getAttribute('data-width');
+            progressBar.style.width = width + '%';
+            observer.unobserve(progressBar);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      skillBars.forEach(bar => {
+        observer.observe(bar);
+      });
+    }
+
+    // Initialize animations when page loads
+    document.addEventListener('DOMContentLoaded', () => {
+      animateSkillBars();
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Add loading animation to page
+    window.addEventListener('load', () => {
+      document.body.style.opacity = '1';
+    });
+  </script>
+
+</body>
+</html>
