@@ -4,7 +4,7 @@ Welcome to my personal developer portfolio! This is a sleek, modern, and fully r
 
 ## 🔗 Live Preview
 
-[Visit Portfolio Website]([https://your-deployed-link.com](https://ishanuchaudhary.github.io/portfolio/))  
+[Visit Portfolio Website]([https://ishanuchaudhary.github.io/portfolio/])  
 
 ---
 
