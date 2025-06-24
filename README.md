@@ -86,10 +86,11 @@ Welcome to my personal developer portfolio! This is a sleek, modern, and fully r
 This project is open source and available under the MIT License.
 Feel free to fork and modify for your own personal use.
 
-🙋‍♂️ Author
-Sanskar Singh
-📍 Greater Noida, India
-📧 sanskar1223@gmail.com
-🔗 LinkedIn | GitHub
+---
+
+## ✨ Created with ❤️ by Sanskar Singh
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?logo=linkedin&style=flat-square)](https://www.linkedin.com/in/sanskar9929/)
+[![GitHub](https://img.shields.io/badge/GitHub-%2312100E.svg?logo=github&style=flat-square)](https://github.com/ishanuchaudhary)
 
 "Code with purpose. Design with empathy. Deploy with pride."
