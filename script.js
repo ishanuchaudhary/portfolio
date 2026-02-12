@@ -32,6 +32,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // Mobile navigation toggle (hamburger)
+  const navToggle = document.getElementById('navToggle');
+  const mainNav = document.querySelector('.topnav nav');
+  if (navToggle && mainNav) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = document.body.classList.toggle('nav-open');
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    // Close menu when a nav link is clicked (useful on mobile)
+    mainNav.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        if (document.body.classList.contains('nav-open')) {
+          document.body.classList.remove('nav-open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+  }
+
   // Animated Skill Bars (home page only)
   const skillBars = document.querySelectorAll('.skill-progress');
   if (skillBars.length) {

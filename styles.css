@@ -93,6 +93,12 @@ body.contact-page {
   border-bottom: 1px solid var(--border-color);
 }
 
+.topnav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
 .topnav .logo {
   font-size: 1.8rem;
   font-weight: 700;
@@ -142,6 +148,44 @@ body.contact-page {
 
 .topnav nav a.active::after {
   width: 100%;
+}
+
+.nav-toggle {
+  display: none;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  color: var(--text-primary);
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  gap: 0.4rem;
+}
+
+.nav-toggle-label {
+  font-size: 0.75rem;
+}
+
+.nav-toggle i {
+  font-size: 0.7rem;
+  transition: transform 0.25s ease;
+}
+
+body.nav-open .nav-toggle {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.35);
+}
+
+body.nav-open .nav-toggle i {
+  transform: rotate(-180deg);
 }
 
 .theme-toggle {
@@ -1058,13 +1102,42 @@ footer {
 
 @media (max-width: 768px) {
   .topnav {
-    padding: 1rem 1.5rem;
-    flex-direction: column;
-    gap: 1rem;
+    padding: 0.7rem 1.1rem;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.75rem;
   }
 
   .topnav nav {
-    gap: 1rem;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 1px solid transparent;
+  }
+
+  .topnav nav a {
+    width: 100%;
+    font-size: 0.9rem;
+    padding: 0.35rem 0;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  body.nav-open .topnav nav {
+    max-height: 260px;
+    opacity: 1;
+    pointer-events: auto;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top-color: var(--border-color);
   }
 
   .hero-section {
