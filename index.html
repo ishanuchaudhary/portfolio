@@ -1,179 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sanskar Singh - Portfolio</title>
-
-  <!-- Google Fonts - Professional fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
-
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-
-  <!-- Shared styles -->
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sanskar Singh — Developer Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="styles.css"/>
 </head>
-<body class="home-page">
+<body>
 
-  <div class="topnav">
-    <div class="logo">Portfolio</div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-    <div class="topnav-actions">
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-        <i class="fas fa-moon"></i>
-      </button>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
-        <span class="nav-toggle-label">Menu</span>
-        <i class="fas fa-chevron-down" aria-hidden="true"></i>
-      </button>
-    </div>
-  </div>
+<!-- Custom cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
-  <section class="hero-section">
-    <div class="hero-text">
-      <h1>Hello, I'm</h1>
-      <h2><span>Sanskar Singh</span></h2>
-      <p class="hero-subtitle">AI/ML • Frontend • Cloud & DevOps</p>
-      <div class="hero-badges">
-        <span class="chip"><i class="fas fa-graduation-cap"></i> B.Tech CSE (2022–2026)</span>
-        <span class="chip"><i class="fas fa-brain"></i> AI/ML Intern</span>
-        <span class="chip"><i class="fas fa-code"></i> Frontend Developer</span>
-        <span class="chip"><i class="fas fa-cloud"></i> AWS Cloud Foundations</span>
+<!-- Matrix background -->
+<canvas id="matrix-canvas"></canvas>
+
+<!-- ─── NAVBAR ─── -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">&gt; <span>sanskar</span>.dev<span class="cursor-blink"></span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">home</a></li>
+    <li><a href="about.html">about</a></li>
+    <li><a href="contact.html">contact</a></li>
+  </ul>
+  <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+</nav>
+
+<div class="wrapper">
+
+  <!-- ─── HERO ─── -->
+  <div class="hero-section">
+    <div class="hero-left">
+
+      <div class="hero-status fade-in">
+        <span class="status-dot"></span>
+        Available for opportunities
       </div>
-      <p>
-        A motivated Computer Science undergraduate specializing in AI/ML, web development, and cloud-based solutions.
-        Skilled in Python, Java, JavaScript, and AWS, with hands-on experience building and deploying production-ready,
-        user-focused applications. Key projects include a facial recognition attendance system that reduced manual work
-        by approximately 80%, an OCR-to-speech accessibility tool, a farmer-focused social platform, and an AI-powered
-        digital health assistant. Recognized as a Best Performer in frontend development and have deployed 5+ full-stack
-        projects on GitHub.
+
+      <h1 class="hero-name fade-in fade-in-delay-1">
+        Sanskar<br><span class="accent">Singh.</span>
+      </h1>
+
+      <div class="hero-role fade-in fade-in-delay-2">
+        <span class="typed-text" id="typedText"></span><span class="cursor-blink"></span>
+      </div>
+
+      <p class="hero-bio fade-in fade-in-delay-3">
+        Final-year <span class="hl">B.Tech CSE</span> student at Galgotias University (2022–2026) with
+        internships at <span class="hl">AWS</span> and <span class="hl">Google</span>. Published researcher
+        (Springer LNCS). <span class="hl">Best Performer</span> in Frontend Development. Building
+        production-grade apps across AI/ML, full-stack, and cloud.
       </p>
-      <a href="Sanskar-Resume.pdf" class="btn">Download Resume</a>
-      
-      <div class="social-links">
-        <a href="https://linkedin.com/in/sanskar9929" target="_blank" class="linkedin" title="Connect on LinkedIn">
-          <i class="fab fa-linkedin-in"></i>
+
+      <div class="hero-actions fade-in fade-in-delay-4">
+        <a href="Sanskar-Resume.pdf" class="btn-primary" download>
+          <i class="fas fa-download"></i> Download Resume
         </a>
-        <a href="https://github.com/ishanuchaudhary" target="_blank" class="github" title="View GitHub Profile">
-          <i class="fab fa-github"></i>
+        <a href="about.html" class="btn-secondary">
+          <i class="fas fa-user"></i> About Me
         </a>
       </div>
+
+      <div class="hero-socials fade-in fade-in-delay-4">
+        <a href="https://github.com/ishanuchaudhary" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/sanskar9929" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="mailto:sanskar9929@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+      </div>
+
+    </div><!-- /hero-left -->
+
+    <div class="hero-right fade-in fade-in-delay-2">
+      <div class="terminal-card">
+        <div class="terminal-bar">
+          <div class="t-dot red"></div>
+          <div class="t-dot yellow"></div>
+          <div class="t-dot green"></div>
+          <span class="terminal-title">sanskar.json</span>
+        </div>
+        <div style="padding:16px 20px 6px; text-align:center;">
+          <div class="profile-ring">
+            <img src="sanskar.jpg" alt="Sanskar Singh"
+              onerror="this.parentElement.innerHTML='<span class=\'profile-ring-placeholder\'><i class=\'fas fa-user\'></i></span>'"/>
+          </div>
+        </div>
+        <div class="terminal-body">
+          <span class="t-bracket">{</span>
+          <span class="t-indent"><span class="t-key">"name"</span>: <span class="t-str">"Sanskar Singh"</span>,</span>
+          <span class="t-indent"><span class="t-key">"alias"</span>: <span class="t-str">"Shanu"</span>,</span>
+          <span class="t-indent"><span class="t-key">"location"</span>: <span class="t-str">"Greater Noida, IN"</span>,</span>
+          <span class="t-indent"><span class="t-key">"degree"</span>: <span class="t-str">"B.Tech CSE '26"</span>,</span>
+          <span class="t-indent"><span class="t-key">"internships"</span>: <span class="t-arr">[</span></span>
+          <span class="t-indent" style="padding-left:36px;"><span class="t-str">"AWS — AI/ML"</span>,</span>
+          <span class="t-indent" style="padding-left:36px;"><span class="t-str">"Google Android"</span>,</span>
+          <span class="t-indent" style="padding-left:36px;"><span class="t-str">"Acumen Travels — Frontend"</span></span>
+          <span class="t-indent"><span class="t-arr">]</span>,</span>
+          <span class="t-indent"><span class="t-key">"published"</span>: <span class="t-bool">true</span>, <span class="t-comment">// Springer LNCS</span></span>
+          <span class="t-indent"><span class="t-key">"openToWork"</span>: <span class="t-bool">true</span></span>
+          <span class="t-bracket">}</span>
+        </div>
+      </div>
+    </div><!-- /hero-right -->
+  </div><!-- /hero-section -->
+
+  <!-- ─── SKILLS ─── -->
+  <section id="skills">
+    <div class="section-label fade-in">skills.tech_stack</div>
+    <h2 class="section-title fade-in">Skills & Technologies</h2>
+
+    <div class="skills-layout">
+
+      <div class="skill-group fade-in">
+        <div class="skill-group-title"><i class="fas fa-code"></i> Languages & Frameworks</div>
+        <div class="skill-row"><div class="skill-header"><span class="skill-name">Python</span><span class="skill-pct">90%</span></div><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width="90"></div></div></div>
+        <div class="skill-row"><div class="skill-header"><span class="skill-name">JavaScript / TypeScript</span><span class="skill-pct">85%</span></div><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width="85"></div></div></div>
+        <div class="skill-row"><div class="skill-header"><span class="skill-name">React.js</span><span class="skill-pct">85%</span></div><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width="85"></div></div></div>
+        <div class="skill-row"><div class="skill-header"><span class="skill-name">FastAPI / Flask</span><span class="skill-pct">88%</span></div><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width="88"></div></div></div>
+        <div class="skill-row"><div class="skill-header"><span class="skill-name">Java</span><span class="skill-pct">75%</span></div><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width="75"></div></div></div>
+        <div class="skill-row"><div class="skill-header"><span class="skill-name">HTML / CSS</span><span class="skill-pct">90%</span></div><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width="90"></div></div></div>
+      </div>
+
+      <div class="skill-group fade-in fade-in-delay-1">
+        <div class="skill-group-title"><i class="fas fa-cloud"></i> Cloud & DevOps</div>
+        <div class="skill-row"><div class="skill-header"><span class="skill-name">AWS (EC2, S3, Lambda, Rekognition)</span><span class="skill-pct">85%</span></div><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width="85"></div></div></div>
+        <div class="skill-row"><div class="skill-header"><span class="skill-name">Docker</span><span class="skill-pct">78%</span></div><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width="78"></div></div></div>
+        <div class="skill-row"><div class="skill-header"><span class="skill-name">Git / GitHub</span><span class="skill-pct">92%</span></div><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width="92"></div></div></div>
+        <div class="skill-row"><div class="skill-header"><span class="skill-name">PostgreSQL / SQLite</span><span class="skill-pct">80%</span></div><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width="80"></div></div></div>
+        <div class="skill-row"><div class="skill-header"><span class="skill-name">Vercel / Deployment</span><span class="skill-pct">82%</span></div><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width="82"></div></div></div>
+      </div>
+
+      <div class="skill-group fade-in fade-in-delay-2">
+        <div class="skill-group-title"><i class="fas fa-brain"></i> AI / ML</div>
+        <div class="skill-row"><div class="skill-header"><span class="skill-name">scikit-learn / ML Pipelines</span><span class="skill-pct">82%</span></div><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width="82"></div></div></div>
+        <div class="skill-row"><div class="skill-header"><span class="skill-name">OpenCV / dlib</span><span class="skill-pct">85%</span></div><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width="85"></div></div></div>
+        <div class="skill-row"><div class="skill-header"><span class="skill-name">LangChain / RAG</span><span class="skill-pct">75%</span></div><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width="75"></div></div></div>
+        <div class="skill-row"><div class="skill-header"><span class="skill-name">OpenAI / MistralAI APIs</span><span class="skill-pct">80%</span></div><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width="80"></div></div></div>
+      </div>
+
+      <div class="skill-group fade-in fade-in-delay-3">
+        <div class="skill-group-title"><i class="fas fa-layer-group"></i> Backend & Tools</div>
+        <div class="skill-row"><div class="skill-header"><span class="skill-name">WebSockets / Real-time</span><span class="skill-pct">78%</span></div><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width="78"></div></div></div>
+        <div class="skill-row"><div class="skill-header"><span class="skill-name">JWT / Auth Systems</span><span class="skill-pct">80%</span></div><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width="80"></div></div></div>
+        <div class="skill-row"><div class="skill-header"><span class="skill-name">REST API Design</span><span class="skill-pct">88%</span></div><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width="88"></div></div></div>
+        <div class="skill-row"><div class="skill-header"><span class="skill-name">Node.js</span><span class="skill-pct">75%</span></div><div class="skill-bar-wrap"><div class="skill-bar-fill" data-width="75"></div></div></div>
+      </div>
+
+    </div><!-- /skills-layout -->
+
+    <div class="tag-cloud fade-in">
+      <span class="tag hot">Python</span>
+      <span class="tag hot">React.js</span>
+      <span class="tag hot">FastAPI</span>
+      <span class="tag hot">AWS</span>
+      <span class="tag">Docker</span>
+      <span class="tag">PostgreSQL</span>
+      <span class="tag">WebSockets</span>
+      <span class="tag">LangChain</span>
+      <span class="tag">JWT</span>
+      <span class="tag">scikit-learn</span>
+      <span class="tag">OpenCV</span>
+      <span class="tag">MistralAI</span>
+      <span class="tag">Node.js</span>
+      <span class="tag">Git</span>
+      <span class="tag">REST APIs</span>
+      <span class="tag">OpenAI API</span>
+      <span class="tag">SQLite</span>
+      <span class="tag">dlib</span>
+      <span class="tag">Vercel</span>
+      <span class="tag">Tailwind CSS</span>
     </div>
 
-    <div class="hero-image">
-      <img src="sanskar.jpg" alt="Sanskar Singh">
-    </div>
   </section>
 
-  <!-- Skills Section -->
-  <section class="skills-section">
-    <h2 class="section-title">Skills & Technologies</h2>
-    <div class="skills-grid">
-      <div class="skill-category">
-        <h3><i class="fas fa-code"></i> Programming Languages</h3>
-        <div class="skill-item">
-          <div class="skill-header">
-            <span class="skill-name">Python</span>
-            <span class="skill-percentage">90%</span>
-          </div>
-          <div class="skill-bar">
-            <div class="skill-progress" data-width="90"></div>
-          </div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-header">
-            <span class="skill-name">JavaScript</span>
-            <span class="skill-percentage">85%</span>
-          </div>
-          <div class="skill-bar">
-            <div class="skill-progress" data-width="85"></div>
-          </div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-header">
-            <span class="skill-name">HTML/CSS</span>
-            <span class="skill-percentage">80%</span>
-          </div>
-          <div class="skill-bar">
-            <div class="skill-progress" data-width="80"></div>
-          </div>
-        </div>
-      </div>
+</div><!-- /wrapper -->
 
-      <div class="skill-category">
-        <h3><i class="fas fa-cloud"></i> Cloud & DevOps</h3>
-        <div class="skill-item">
-          <div class="skill-header">
-            <span class="skill-name">AWS</span>
-            <span class="skill-percentage">85%</span>
-          </div>
-          <div class="skill-bar">
-            <div class="skill-progress" data-width="85"></div>
-          </div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-header">
-            <span class="skill-name">Docker</span>
-            <span class="skill-percentage">75%</span>
-          </div>
-          <div class="skill-bar">
-            <div class="skill-progress" data-width="75"></div>
-          </div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-header">
-            <span class="skill-name">Git</span>
-            <span class="skill-percentage">90%</span>
-          </div>
-          <div class="skill-bar">
-            <div class="skill-progress" data-width="90"></div>
-          </div>
-        </div>
-      </div>
+<footer>
+  <p>Designed & Built by <span>Sanskar Singh</span> &bull; 2026 &bull; <span>&lt;/&gt;</span> with caffeine &amp; curiosity</p>
+</footer>
 
-      <div class="skill-category">
-        <h3><i class="fas fa-brain"></i> AI/ML & Tools</h3>
-        <div class="skill-item">
-          <div class="skill-header">
-            <span class="skill-name">Machine Learning</span>
-            <span class="skill-percentage">80%</span>
-          </div>
-          <div class="skill-bar">
-            <div class="skill-progress" data-width="80"></div>
-          </div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-header">
-            <span class="skill-name">TensorFlow</span>
-            <span class="skill-percentage">75%</span>
-          </div>
-          <div class="skill-bar">
-            <div class="skill-progress" data-width="75"></div>
-          </div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-header">
-            <span class="skill-name">OpenCV</span>
-            <span class="skill-percentage">85%</span>
-          </div>
-          <div class="skill-bar">
-            <div class="skill-progress" data-width="85"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    © 2026 Sanskar Singh. All rights reserved.
-  </footer>
-
-  <script src="script.js"></script>
-
+<script src="script.js"></script>
 </body>
 </html>

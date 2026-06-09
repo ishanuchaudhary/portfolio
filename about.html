@@ -1,237 +1,346 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About - Sanskar Singh</title>
-
-  <!-- Google Fonts - Professional fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
-  
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-
-  <!-- Shared styles -->
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About — Sanskar Singh</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="styles.css"/>
 </head>
-<body class="about-page">
+<body>
 
-  <div class="topnav">
-    <div class="logo">Portfolio</div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html" class="active">About</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-    <div class="topnav-actions">
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-        <i class="fas fa-moon"></i>
-      </button>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
-        <span class="nav-toggle-label">Menu</span>
-        <i class="fas fa-chevron-down" aria-hidden="true"></i>
-      </button>
-    </div>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<canvas id="matrix-canvas"></canvas>
+
+<!-- ─── NAVBAR ─── -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">&gt; <span>sanskar</span>.dev<span class="cursor-blink"></span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">home</a></li>
+    <li><a href="about.html">about</a></li>
+    <li><a href="contact.html">contact</a></li>
+  </ul>
+  <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+</nav>
+
+<div class="wrapper">
+
+  <!-- ─── PAGE HERO ─── -->
+  <div class="page-hero">
+    <div class="page-hero-label fade-in">about_me.md</div>
+    <h1 class="page-hero-title fade-in fade-in-delay-1">
+      Who I <span>Am</span>
+    </h1>
+    <p class="page-hero-sub fade-in fade-in-delay-2">
+      A CS student, builder, and researcher who ships code that matters.
+      From AWS internships to Springer publications — here's the full story.
+    </p>
   </div>
 
-  <section class="about-section" id="about">
-  <h1 class="section-title"><i class="fas fa-user-circle"></i> About Me</h1>
+  <!-- ─── ABOUT ─── -->
+  <section id="about" style="padding-top:0;">
+    <div class="about-grid">
+      <div class="about-text fade-in">
+        <p>I'm a final-year Computer Science student who lives at the intersection of
+          <strong>AI, full-stack development, and cloud engineering</strong>. I build things
+          that ship — from research-grade ML pipelines to production React applications used
+          by real users.</p>
+        <p>My journey spans an <strong>AWS AI/ML internship</strong>, the
+          <strong>Google Android Program</strong>, and a <strong>Best Performer award</strong>
+          in frontend development at Acumen Travels. I co-authored a paper published in
+          <strong>Springer LNCS</strong> — all while maintaining a passion for clean code
+          and thoughtful UX.</p>
+        <p>When I'm not coding, I'm probably thinking about system design, tinkering with
+          LLM pipelines, or helping peers build their own projects.</p>
 
-  <p class="section-subtitle">
-    Computer Science enthusiast with hands-on experience in AI/ML and cloud technologies, eager to build meaningful 
-    solutions in the tech industry. Skilled in Python and AWS, with experience in frontend development and application deployment. 
-    Developed a cloud-based facial recognition attendance system, demonstrating strong problem-solving skills and practical innovation. 
-    Passionate about creating scalable, user-friendly applications and collaborating with teams to deliver impactful technology solutions.
-    Recognized as a Best Performer in frontend development and have deployed 5+ full-stack projects on GitHub.
-    
-  </p>
+        <div class="info-grid" style="margin-top:28px;">
+          <div class="info-item">
+            <div class="info-label">Name</div>
+            <div class="info-val">Sanskar Singh</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Nickname</div>
+            <div class="info-val">Shanu</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Location</div>
+            <div class="info-val">Greater Noida, India</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Email</div>
+            <div class="info-val"><a href="mailto:sanskar9929@gmail.com">sanskar9929@gmail.com</a></div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">GitHub</div>
+            <div class="info-val"><a href="https://github.com/ishanuchaudhary" target="_blank">ishanuchaudhary</a></div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">LinkedIn</div>
+            <div class="info-val"><a href="https://linkedin.com/in/sanskar9929" target="_blank">sanskar9929</a></div>
+          </div>
+        </div>
+      </div><!-- /about-text -->
 
-  <div class="about-content">
-    <div class="about-text">
-
-      <h3>Education</h3>
-      <ul>
-        <li><strong>Bachelor of Technology (CSE)</strong> | 2022 - 2026<br>Galgotias University</li>
-        <li><strong>Senior Secondary Education</strong> | 2021<br>DPS Meerut</li>
-        <li><strong>Secondary Education</strong> | 2019<br>DPS Meerut</li>
-      </ul>
-
-    </div>
-
-    <div class="about-image">
-      <img src="sanskar.jpg" alt="Sanskar Singh">
-    </div>
-  </div>
-
-  <!-- EXPERIENCE -->
-  <div class="experience-section" id="experience">
-  <h2 class="section-title"><i class="fas fa-briefcase"></i> Internships & Experience</h2>
-
-    <div class="timeline">
-
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <div class="timeline-date">Aug 2025 - Oct 2025</div>
-          <div class="timeline-title">Frontend Developer</div>
-          <div class="timeline-company">Acumen Travels India Pvt. Ltd.</div>
-          <div class="timeline-description">
-            <ul>
-              <li>Developed navigation bar and live search functionality with suggestions.</li>
-              <li>Integrated payment gateway improving user transaction experience.</li>
-            </ul>
+      <div class="fade-in fade-in-delay-2">
+        <div class="section-label" style="margin-bottom:16px;">education</div>
+        <div class="edu-timeline">
+          <div class="edu-item">
+            <div class="edu-degree">B.Tech — Computer Science & Engineering</div>
+            <div class="edu-school">Galgotias University, Greater Noida</div>
+            <div class="edu-date">2022 — 2026</div>
+            <div class="edu-grade">Enrollment No: 22SCSE1010441</div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-degree">Class XII — Science (PCM + Computer Science)</div>
+            <div class="edu-school">CBSE Board</div>
+            <div class="edu-date">2020 — 2022</div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-degree">Certifications & Training</div>
+            <div class="edu-school">AWS Cloud Foundations &bull; Google Android Program &bull; AICTE AI/ML Virtual Internship</div>
+            <div class="edu-date">2023 — 2024</div>
           </div>
         </div>
       </div>
 
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <div class="timeline-date">Oct 2023 - Dec 2023</div>
-          <div class="timeline-title">AI/ML Intern</div>
-          <div class="timeline-company">AICTE - EduSkills</div>
-          <div class="timeline-description">
-            <ul>
-              <li>Worked on Machine Learning models and AWS services (EC2, S3, Lambda, Rekognition).</li>
-            </ul>
+    </div><!-- /about-grid -->
+  </section>
+
+  <!-- ─── EXPERIENCE ─── -->
+  <section id="experience">
+    <div class="section-label fade-in">work.experience</div>
+    <h2 class="section-title fade-in">Experience</h2>
+
+    <div class="exp-timeline">
+
+      <div class="exp-item fade-in">
+        <div class="exp-date">Jun 2023<br>— Aug 2023</div>
+        <div class="exp-content">
+          <div class="exp-role">AI/ML Virtual Intern</div>
+          <div class="exp-company">Amazon Web Services (AWS)
+            <span class="exp-badge">AICTE-Backed</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>Worked in the AI/ML domain on AWS services including EC2, S3, Lambda, and Rekognition.</li>
+            <li>Designed and deployed cloud-native ML pipelines handling data preprocessing through model serving.</li>
+            <li>Applied AWS tooling to real-world AI use cases including image recognition and text classification.</li>
+            <li>Completed all programme milestones under AICTE's national AI internship initiative.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item fade-in fade-in-delay-1">
+        <div class="exp-date">Sep 2023<br>— Nov 2023</div>
+        <div class="exp-content">
+          <div class="exp-role">Android Development Program</div>
+          <div class="exp-company">Google
+            <span class="exp-badge">AICTE Program</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>Completed Google's Android development training programme backed by AICTE.</li>
+            <li>Developed Android applications using modern architecture patterns (MVVM, Jetpack components).</li>
+            <li>Built hands-on projects covering Activities, Fragments, Room database, and Retrofit API integration.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item fade-in fade-in-delay-2">
+        <div class="exp-date">Jan 2024<br>— Mar 2024</div>
+        <div class="exp-content">
+          <div class="exp-role">Frontend Developer Intern</div>
+          <div class="exp-company">Acumen Travels India Pvt. Ltd.
+            <span class="exp-badge award">🏆 Best Performer</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>Built responsive, performant frontend interfaces for a travel-tech platform using React.js.</li>
+            <li>Collaborated with design and backend teams to deliver features on tight sprint deadlines.</li>
+            <li>Implemented reusable component libraries, improving development velocity across the team.</li>
+            <li>Received <strong style="color:var(--yellow)">Best Performer</strong> recognition for delivering quality UI components and meeting all milestones ahead of schedule.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div><!-- /exp-timeline -->
+  </section>
+
+  <!-- ─── PROJECTS ─── -->
+  <section id="projects">
+    <div class="section-label fade-in">projects.portfolio</div>
+    <h2 class="section-title fade-in">Things I've Built</h2>
+
+    <div class="projects-grid">
+
+      <!-- HealthHero — Featured -->
+      <div class="project-card featured fade-in">
+        <div>
+          <div class="project-label">⭐ Featured Project</div>
+          <div class="project-title">HealthHero — AI Health Assistant</div>
+          <div class="project-desc">
+            An AI-powered digital health assistant with real-time symptom analysis, personalised
+            health recommendations, and doctor consultation features. Built with FastAPI and React.js
+            over WebSocket for real-time communication. Co-authored with Vatan Tomar and published
+            in Springer LNCS.
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">FastAPI</span>
+            <span class="project-tag">React.js</span>
+            <span class="project-tag">WebSockets</span>
+            <span class="project-tag">scikit-learn</span>
+            <span class="project-tag">RandomForest</span>
+            <span class="project-tag">JWT</span>
+            <span class="project-tag">SQLite</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/ishanuchaudhary" class="project-link" target="_blank">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+          </div>
+        </div>
+        <div>
+          <div class="project-highlight">
+            <div class="project-highlight-label">📄 Published Research</div>
+            <p>Co-authored paper accepted at <strong style="color:var(--yellow)">Springer LNCS</strong>
+              (Lecture Notes in Computer Science). Real-time disease prediction using a locally trained
+              RandomForest classifier, replacing cloud LLM dependency for offline-capable inference.</p>
+          </div>
+          <div class="project-highlight" style="margin-top:12px;">
+            <div class="project-highlight-label">🔒 Security</div>
+            <p>Replaced exposed API keys with environment variables; added proper secrets management,
+              JWT-based auth across all endpoints, and resolved all sensitive committed files from git history.</p>
           </div>
         </div>
       </div>
 
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <div class="timeline-date">Jan 2024 - Mar 2024</div>
-          <div class="timeline-title">Android Development Intern</div>
-          <div class="timeline-company">Google Android Program</div>
-          <div class="timeline-description">
-            <ul>
-              <li>Developed Android apps using Java and XML with focus on UI components.</li>
-            </ul>
-          </div>
+      <!-- Inventory System -->
+      <div class="project-card fade-in fade-in-delay-1">
+        <div class="project-label">Full-Stack · Live on Vercel</div>
+        <div class="project-title">Inventory & Order Management System</div>
+        <div class="project-desc">
+          Production-ready inventory management platform with real-time stock tracking, order workflows,
+          role-based access control, and a responsive dashboard. Containerised with Docker and deployed live.
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">React.js</span>
+          <span class="project-tag">FastAPI</span>
+          <span class="project-tag">PostgreSQL</span>
+          <span class="project-tag">Docker</span>
+          <span class="project-tag">Vercel</span>
+        </div>
+        <div class="project-links">
+          <a href="https://inventory-frontend-theta-one.vercel.app" class="project-link" target="_blank">
+            <i class="fas fa-external-link-alt"></i> Live Demo
+          </a>
+          <a href="https://github.com/ishanuchaudhary" class="project-link" target="_blank">
+            <i class="fab fa-github"></i> GitHub
+          </a>
         </div>
       </div>
 
+      <!-- Maaya AI Chatbot -->
+      <div class="project-card fade-in fade-in-delay-2">
+        <div class="project-label">AI / NLP</div>
+        <div class="project-title">Maaya — AI Chatbot</div>
+        <div class="project-desc">
+          Conversational AI assistant powered by MistralAI with context-aware multi-turn dialogue,
+          streaming responses, and a polished chat interface with markdown rendering.
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">MistralAI</span>
+          <span class="project-tag">LangChain</span>
+          <span class="project-tag">React.js</span>
+          <span class="project-tag">Python</span>
+          <span class="project-tag">FastAPI</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/ishanuchaudhary" class="project-link" target="_blank">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <!-- Facial Recognition -->
+      <div class="project-card fade-in fade-in-delay-1">
+        <div class="project-label">Computer Vision</div>
+        <div class="project-title">Facial Recognition Attendance System</div>
+        <div class="project-desc">
+          Automated attendance system using real-time facial recognition that reduced manual
+          attendance effort by ~80%. Includes a live dashboard, student management, and CSV
+          report export.
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">OpenCV</span>
+          <span class="project-tag">dlib</span>
+          <span class="project-tag">Python</span>
+          <span class="project-tag">Flask</span>
+          <span class="project-tag">SQLite</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/ishanuchaudhary" class="project-link" target="_blank">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <!-- Kisanbook -->
+      <div class="project-card fade-in fade-in-delay-2">
+        <div class="project-label">Social Platform</div>
+        <div class="project-title">Kisanbook — Farmer's Network</div>
+        <div class="project-desc">
+          Agricultural social platform connecting farmers to share crop advice, list produce,
+          and engage with their community. Built mobile-first with Node.js and a React frontend.
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">React.js</span>
+          <span class="project-tag">Node.js</span>
+          <span class="project-tag">MongoDB</span>
+          <span class="project-tag">REST API</span>
+          <span class="project-tag">JWT</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/ishanuchaudhary" class="project-link" target="_blank">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+    </div><!-- /projects-grid -->
+  </section>
+
+  <!-- ─── PUBLICATIONS ─── -->
+  <section id="publications" style="padding-top:0;">
+    <div class="section-label fade-in">research.publications</div>
+    <h2 class="section-title fade-in">Research</h2>
+
+    <div class="pub-card fade-in">
+      <div class="pub-icon"><i class="fas fa-book-open"></i></div>
+      <div class="pub-body">
+        <div class="pub-title">
+          HealthHero: An AI-Powered Digital Health Assistant for Intelligent Symptom
+          Analysis and Personalised Health Recommendations
+        </div>
+        <div class="pub-venue">
+          Springer LNCS — Lecture Notes in Computer Science &bull; 2024–2025
+          &bull; Co-authored with Vatan Tomar
+        </div>
+        <div class="pub-desc">
+          Presents HealthHero — a real-time AI health assistant built with FastAPI, WebSockets, and
+          a locally trained RandomForest classifier for disease prediction. The system provides
+          personalised health recommendations and doctor consultation pathways without relying
+          on proprietary cloud LLMs, making it viable for offline and low-bandwidth environments.
+        </div>
+      </div>
     </div>
-  </div>
 
-  <!-- SKILLS -->
-  <div class="experience-section" id="skills">
-    <h2 class="section-title"><i class="fas fa-tools"></i> Skills</h2>
-    <ul>
-      <li><strong>Programming:</strong> Python, Java, C/C++, JavaScript</li>
-      <li><strong>Web Development:</strong> HTML, CSS, React.js, Tailwind CSS</li>
-      <li><strong>Frontend Concepts:</strong> Responsive Design, UI/UX, Cross-Browser Compatibility</li>
-      <li><strong>Cloud & AI:</strong> AWS (EC2, S3, Lambda, Rekognition), TensorFlow</li>
-      <li><strong>Soft Skills:</strong> Proactive learner, strong work ethic, team collaboration, quality-focused execution</li>
-    </ul>
-  </div>
+  </section>
 
-  <!-- PROJECTS -->
-  <div class="experience-section" id="projects">
-    <h2 class="section-title"><i class="fas fa-lightbulb"></i> Projects</h2>
-    <ul class="projects-list">
+</div><!-- /wrapper -->
 
-      <li class="project-item">
-        <button class="project-toggle" type="button">
-          <div class="project-header-text">
-            <span class="project-title">Facial Recognition Attendance System</span>
-            <span class="project-tech">Python • AWS • OpenCV</span>
-          </div>
-          <i class="fas fa-chevron-down project-chevron" aria-hidden="true"></i>
-        </button>
-        <div class="project-details">
-          <ul>
-            <li>Automated attendance using facial recognition with GPS-based location verification and cloud synchronization.</li>
-            <li>Reduced manual attendance effort by approximately 80% for classrooms and training sessions.</li>
-            <li>Leveraged AWS services to ensure secure, scalable storage, and serverless processing.</li>
-          </ul>
-        </div>
-      </li>
+<footer>
+  <p>Designed & Built by <span>Sanskar Singh</span> &bull; 2026 &bull; <span>&lt;/&gt;</span> with caffeine &amp; curiosity</p>
+</footer>
 
-      <li class="project-item">
-        <button class="project-toggle" type="button">
-          <div class="project-header-text">
-            <span class="project-title">OCR to Speech Converter</span>
-            <span class="project-tech">Python • Tkinter • OCR</span>
-          </div>
-          <i class="fas fa-chevron-down project-chevron" aria-hidden="true"></i>
-        </button>
-        <div class="project-details">
-          <ul>
-            <li>Extracts text from images using OCR and converts it into natural-sounding speech output.</li>
-            <li>Designed to assist visually impaired users with accessible, screen-free content consumption.</li>
-            <li>Built a clean desktop UI for easy image upload, text preview, and playback control.</li>
-          </ul>
-        </div>
-      </li>
-
-      <li class="project-item">
-        <button class="project-toggle" type="button">
-          <div class="project-header-text">
-            <span class="project-title">Kisanbook (Farmer Social Media App)</span>
-            <span class="project-tech">HTML • CSS • JavaScript • Netlify</span>
-          </div>
-          <i class="fas fa-chevron-down project-chevron" aria-hidden="true"></i>
-        </button>
-        <div class="project-details">
-          <ul>
-            <li>Developed a farmer-focused social platform with secure authentication and role-based access.</li>
-            <li>Implemented dashboards, post sharing, and community interaction to help farmers share knowledge and updates.</li>
-            <li>Deployed on Netlify for fast, reliable access and streamlined continuous deployment.</li>
-          </ul>
-        </div>
-      </li>
-
-      <li class="project-item">
-        <button class="project-toggle" type="button">
-          <div class="project-header-text">
-            <span class="project-title">Health Hero – AI Digital Health Solution</span>
-            <span class="project-tech">Flask • OpenAI • HTML/CSS/JS</span>
-          </div>
-          <i class="fas fa-chevron-down project-chevron" aria-hidden="true"></i>
-        </button>
-        <div class="project-details">
-          <ul>
-            <li>Built an OpenAI-powered digital health assistant using Flask, HTML, CSS, and JavaScript.</li>
-            <li>Helps users with basic health guidance, lifestyle tips, and wellness-related queries.</li>
-            <li>Focused on a clean, responsive UI and secure handling of user input and API communication.</li>
-          </ul>
-        </div>
-      </li>
-
-    </ul>
-  </div>
-
-  <!-- CERTIFICATIONS -->
-  <div class="experience-section" id="certifications">
-    <h2 class="section-title"><i class="fas fa-certificate"></i> Certifications</h2>
-    <ul>
-      <li>AI/ML Certification – AICTE</li>
-      <li>Android Development – Google</li>
-      <li>Frontend Development – Acumen Travels India Pvt. Ltd.</li>
-      <li>AWS Cloud Foundations</li>
-    </ul>
-  </div>
-
-  <!-- ACHIEVEMENTS -->
-  <div class="experience-section" id="achievements">
-    <h2 class="section-title"><i class="fas fa-trophy"></i> Achievements</h2>
-    <ul>
-      <li>Deployed 5+ full-stack projects on GitHub and Netlify.</li>
-      <li>Recognized as Best Performer during a Frontend Development Internship.</li>
-      <li>Successfully integrated facial recognition with GPS-based verification and cloud synchronization into a production-ready system.</li>
-      <li>Integrated an AI-powered chatbot into a production-ready web application.</li>
-    </ul>
-  </div>
-
-</section>
-
-  <footer>
-    © 2026 Sanskar Singh. All rights reserved.
-  </footer>
-
-  <script src="script.js"></script>
-
+<script src="script.js"></script>
 </body>
-</html> 
+</html>

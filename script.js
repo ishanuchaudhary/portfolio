@@ -1,155 +1,189 @@
-document.addEventListener('DOMContentLoaded', () => {
-  // Theme Toggle Functionality (shared across pages)
-  const themeToggle = document.getElementById('themeToggle');
-  if (themeToggle) {
-    const body = document.body;
-    const icon = themeToggle.querySelector('i');
+/* =========================================================
+   SANSKAR SINGH — PORTFOLIO SCRIPTS
+   Shared across all pages
+   ========================================================= */
 
-    const currentTheme = localStorage.getItem('theme') || 'dark';
-    body.setAttribute('data-theme', currentTheme);
-    updateThemeIcon(currentTheme);
+// ─── MATRIX CANVAS ───────────────────────────────────────
+(function () {
+  const canvas = document.getElementById('matrix-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, cols, drops;
+  const fontSize = 13;
+  const chars = '01アイウエオカキクケコ<>{}[]();=+-*&|#abcdefghijklmnop'.split('');
 
-    themeToggle.addEventListener('click', () => {
-      const activeTheme = body.getAttribute('data-theme');
-      const newTheme = activeTheme === 'dark' ? 'light' : 'dark';
+  function init() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+    cols = Math.floor(W / fontSize);
+    drops = Array(cols).fill(1);
+    ctx.font = fontSize + 'px JetBrains Mono, monospace';
+  }
 
-      // Add a temporary class so CSS can animate the transition
-      body.classList.add('theme-transition');
-
-      body.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-      updateThemeIcon(newTheme);
-
-      // Remove the transition helper class after the animation duration
-      setTimeout(() => {
-        body.classList.remove('theme-transition');
-      }, 400);
+  function draw() {
+    ctx.fillStyle = 'rgba(7, 12, 15, 0.05)';
+    ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = '#00ff88';
+    drops.forEach((y, i) => {
+      const c = chars[Math.floor(Math.random() * chars.length)];
+      ctx.fillText(c, i * fontSize, y * fontSize);
+      if (y * fontSize > H && Math.random() > 0.975) drops[i] = 0;
+      drops[i]++;
     });
+  }
 
-    function updateThemeIcon(theme) {
-      if (!icon) return;
-      icon.className = theme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
+  init();
+  window.addEventListener('resize', init);
+  setInterval(draw, 60);
+})();
+
+// ─── CUSTOM CURSOR ───────────────────────────────────────
+(function () {
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  if (!cursor || !ring) return;
+  let cx = 0, cy = 0, rx = 0, ry = 0;
+
+  document.addEventListener('mousemove', e => {
+    cx = e.clientX; cy = e.clientY;
+    cursor.style.left = cx - 5 + 'px';
+    cursor.style.top = cy - 5 + 'px';
+  });
+
+  function animateRing() {
+    rx += (cx - rx) * 0.12;
+    ry += (cy - ry) * 0.12;
+    ring.style.left = rx + 'px';
+    ring.style.top = ry + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  document.querySelectorAll('a, button, .project-card').forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.style.transform = 'scale(2.5)');
+    el.addEventListener('mouseleave', () => cursor.style.transform = 'scale(1)');
+  });
+})();
+
+// ─── NAVBAR SCROLL ───────────────────────────────────────
+(function () {
+  const navbar = document.getElementById('navbar');
+  if (!navbar) return;
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+  });
+})();
+
+// ─── MOBILE MENU ─────────────────────────────────────────
+(function () {
+  const btn = document.getElementById('mobileMenuBtn');
+  const links = document.getElementById('navLinks');
+  if (!btn || !links) return;
+  btn.addEventListener('click', () => links.classList.toggle('open'));
+  // Close on link click
+  links.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => links.classList.remove('open'));
+  });
+})();
+
+// ─── ACTIVE NAV LINK ─────────────────────────────────────
+(function () {
+  const current = window.location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    const href = a.getAttribute('href');
+    if (href === current || (current === '' && href === 'index.html')) {
+      a.classList.add('active');
     }
+  });
+})();
+
+// ─── TYPING EFFECT (index only) ──────────────────────────
+(function () {
+  const el = document.getElementById('typedText');
+  if (!el) return;
+  const phrases = [
+    'Full-Stack Developer',
+    'AI/ML Engineer',
+    'Cloud Enthusiast',
+    'Published Researcher',
+    'Frontend Craftsman'
+  ];
+  let pi = 0, ci = 0, deleting = false;
+
+  function type() {
+    const phrase = phrases[pi];
+    if (!deleting) {
+      el.textContent = phrase.slice(0, ++ci);
+      if (ci === phrase.length) { deleting = true; setTimeout(type, 2000); return; }
+    } else {
+      el.textContent = phrase.slice(0, --ci);
+      if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; }
+    }
+    setTimeout(type, deleting ? 50 : 90);
   }
+  type();
+})();
 
-  // Mobile navigation toggle (hamburger)
-  const navToggle = document.getElementById('navToggle');
-  const mainNav = document.querySelector('.topnav nav');
-  if (navToggle && mainNav) {
-    navToggle.addEventListener('click', () => {
-      const isOpen = document.body.classList.toggle('nav-open');
-      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+// ─── FADE-IN ON SCROLL ───────────────────────────────────
+(function () {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
     });
+  }, { threshold: 0.1 });
 
-    // Close menu when a nav link is clicked (useful on mobile)
-    mainNav.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => {
-        if (document.body.classList.contains('nav-open')) {
-          document.body.classList.remove('nav-open');
-          navToggle.setAttribute('aria-expanded', 'false');
-        }
-      });
-    });
-  }
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+})();
 
-  // Animated Skill Bars (home page only)
-  const skillBars = document.querySelectorAll('.skill-progress');
-  if (skillBars.length) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const progressBar = entry.target;
-            const width = progressBar.getAttribute('data-width');
-            if (width) {
-              progressBar.style.width = width + '%';
-            }
-            observer.unobserve(progressBar);
-          }
+// ─── SKILL BAR ANIMATION ─────────────────────────────────
+(function () {
+  const skillObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
+          bar.style.width = bar.dataset.width + '%';
         });
-      },
-      { threshold: 0.5 }
-    );
+        skillObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.2 });
 
-    skillBars.forEach((bar) => observer.observe(bar));
-  }
+  document.querySelectorAll('.skill-group').forEach(g => skillObs.observe(g));
+})();
 
-  // Smooth scrolling for in-page anchor links
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
+// ─── SMOOTH ANCHOR SCROLL ────────────────────────────────
+(function () {
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
       if (target) {
-        target.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-        });
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+        document.getElementById('navLinks')?.classList.remove('open');
       }
     });
   });
+})();
 
-  // Contact form demo handler (contact page only)
-  const contactForm = document.querySelector('.contact-form');
-  if (contactForm) {
-    contactForm.addEventListener('submit', (event) => {
-      event.preventDefault();
-
-      const nameInput = contactForm.querySelector('input[name="name"]');
-      const emailInput = contactForm.querySelector('input[name="email"]');
-      const messageInput = contactForm.querySelector('textarea[name="message"]');
-
-      const name = nameInput?.value.trim();
-      const email = emailInput?.value.trim();
-      const message = messageInput?.value.trim();
-
-      if (!name || !email || !message) {
-        alert('Please fill out your name, email, and message before sending.');
-        return;
-      }
-
-      const subject = `Portfolio Contact - ${name}`;
-      const bodyLines = [
-        `Name: ${name}`,
-        `Email: ${email}`,
-        '',
-        'Message:',
-        message,
-      ];
-
-      const mailtoLink = `mailto:ssanskar1223@gmail.com?subject=${encodeURIComponent(
-        subject
-      )}&body=${encodeURIComponent(bodyLines.join('\n'))}`;
-
-      // Open the user's default mail client with the message pre-filled
-      window.location.href = mailtoLink;
-    });
-  }
-
-  // Projects accordion (About page)
-  const projectItems = document.querySelectorAll('.project-item');
-  if (projectItems.length) {
-    projectItems.forEach((item) => {
-      const toggle = item.querySelector('.project-toggle');
-      if (!toggle) return;
-
-      toggle.addEventListener('click', () => {
-        const isOpen = item.classList.contains('open');
-
-        // Close other open items for a cleaner accordion behavior
-        projectItems.forEach((other) => {
-          if (other !== item) {
-            other.classList.remove('open');
-          }
-        });
-
-        item.classList.toggle('open', !isOpen);
-      });
-    });
-  }
-});
-
-// Page load fade-in (optional visual polish)
-window.addEventListener('load', () => {
-  document.body.style.opacity = '1';
-});
-
+// ─── CONTACT FORM FEEDBACK ───────────────────────────────
+(function () {
+  const form = document.getElementById('contactForm');
+  if (!form) return;
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const btn = form.querySelector('.form-submit');
+    const original = btn.innerHTML;
+    btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+    btn.style.background = '#00e5ff';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.innerHTML = original;
+      btn.style.background = '';
+      btn.disabled = false;
+      form.reset();
+    }, 3000);
+  });
+})();
